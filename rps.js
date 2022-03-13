@@ -12,27 +12,23 @@ function computerPlay() {
     }
     return compChoice;
 }
-
+/* Allows players to select either rock, paper, or scissors for their weapon. */
 function playerSelection() {
     let flag = true;
     let playerSelection = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
     playerSelection = playerSelection.toLowerCase();
-    console.log(playerSelection);
     // make sure the player types 'rock', 'paper', or 'scissors'
     while (flag) {
         if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
             playerSelection = playerSelection.toLowerCase();
-            console.log(playerSelection);
             flag = false;
         } else {
             playerSelection = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
-            console.log(playerSelection);
         }
     }
     return playerSelection;
 }
-
-/* function playRound(playerSelection, computerPlay) {
+// One round of player vs. computer.
+function playRound(playerSelection, computerPlay) {
     
-} */
-playerSelection();
+}
