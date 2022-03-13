@@ -16,23 +16,23 @@ function computerPlay() {
 function playerSelection() {
     let flag = true;
     let playerSelection = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
-    playerSelection = playerSelection.toLocaleLowerCase();
+    playerSelection = playerSelection.toLowerCase();
     console.log(playerSelection);
     // make sure the player types 'rock', 'paper', or 'scissors'
     while (flag) {
-        if (playerSelection != 'rock' || playerSelection != 'paper' || playerSelection != 'scissors') {
-            alert("Whoopsies, you didn't choose the right weapon! Please choose 'rock', 'paper', or 'scissors' to continue.");
-            prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
-            flag = false
+        if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
+            playerSelection = playerSelection.toLowerCase();
+            console.log(playerSelection);
+            flag = false;
         } else {
-            playerSelection = playerSelection.toLocaleLowerCase();
+            playerSelection = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
+            console.log(playerSelection);
         }
     }
-    
     return playerSelection;
 }
 
-function playRound(playerSelection, computerPlay) {
+/* function playRound(playerSelection, computerPlay) {
     
-}
+} */
 playerSelection();
