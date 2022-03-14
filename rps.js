@@ -34,27 +34,37 @@ function playRound() {
     playerWeapon = playerSelection();
     computerWeapon = computerPlay();
     let result;
-    // Logic for game
-    if (playerWeapon == 'rock' && computerWeapon == 'rock') {
-        result = console.log("It's a tie!")
-    } else if (playerWeapon == 'rock' && computerWeapon == 'paper') {
-        result = console.log("Bummer, the computer wins.");
+    // Logic for game: one variable for the result of the game. 1 = player win, 2 = player lose, 3 = tie
+    if (playerWeapon == 'rock' && computerWeapon == 'paper') {
+        result = 2;
     } else if (playerWeapon == 'rock' && computerWeapon == 'scissors') {
-        result = console.log("You WIN!!!");
+        result = 1;
     } else {
-        result = console.log("It's a tie, try again!");
+        result = 3;
+    }
+
+    if (playerWeapon == 'paper' && computerWeapon == 'rock') {
+        result = 1; /* console.log("Computer wins. Paper covers rock!") */;
+    } else if (playerWeapon == 'paper' && computerWeapon == 'scissors') {
+        result = 2;/* console.log("You lose. Scissors cut paper!"); */
+    } else {
+        result = 3;
+    }
+
+    if (playerWeapon == 'scissors' && computerWeapon == 'rock') {
+        result = 2;
+    } else if (playerWeapon == 'scissors' && computerWeapon == 'paper') {
+        result = 1;
+    } else {
+        result = 3;
     }
     return result;
-
-    if(computerWeapon == 'paper' && playerWeapon == 'paper') {
-        result = console.log("It's a tie!")
-    }
 }
 // Play a game of 5 rounds and return a winner
-function game() {
+/* function game() {
     for (let i = 0; i < 5; i++) {
         console.log(playRound());
         // tracking scores
         if 
     }
-}
+} */
