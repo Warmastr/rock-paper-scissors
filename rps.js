@@ -29,6 +29,32 @@ function playerSelection() {
     return playerSelection;
 }
 // One round of player vs. computer.
-function playRound(playerSelection, computerPlay) {
-    
+function playRound() {
+    // Establish each players' weapon of choice
+    playerWeapon = playerSelection();
+    computerWeapon = computerPlay();
+    let result;
+    // Logic for game
+    if (playerWeapon == 'rock' && computerWeapon == 'rock') {
+        result = console.log("It's a tie!")
+    } else if (playerWeapon == 'rock' && computerWeapon == 'paper') {
+        result = console.log("Bummer, the computer wins.");
+    } else if (playerWeapon == 'rock' && computerWeapon == 'scissors') {
+        result = console.log("You WIN!!!");
+    } else {
+        result = console.log("It's a tie, try again!");
+    }
+    return result;
+
+    if(computerWeapon == 'paper' && playerWeapon == 'paper') {
+        result = console.log("It's a tie!")
+    }
+}
+// Play a game of 5 rounds and return a winner
+function game() {
+    for (let i = 0; i < 5; i++) {
+        console.log(playRound());
+        // tracking scores
+        if 
+    }
 }
