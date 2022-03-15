@@ -34,27 +34,33 @@ function playRound() {
     playerWeapon = playerSelection();
     computerWeapon = computerPlay();
     let result;
-
+    const computerPaper = 'Welp, computer won, they got lucky and chose paper. Paper covers rock.';
+    const playerRock = 'You win, computer chose scissors and rock smashes the crap outta scissors!';
+    const playerPaper = 'You win, computer chose rock. Paper covers Rock!';
+    const computerScissors = 'Computer chose scissors and wins :( scissors cut paper.';
+    const computerRock = 'Computer chose rock and wins, rock smashes scissors.';
+    const playerScissors = 'You win, computer chose paper like an idiot! Scissors cut paper!';
+    const tie = 'It\'s a tie, keep trying!';
     if (playerWeapon == 'rock' && computerWeapon == 'paper') {
-        result = 'Welp, computer won. Paper covers rock.';
+        result = computerPaper;
     } else if (playerWeapon == 'rock' && computerWeapon == 'scissors') {
-        result = 'You win, rock smashes the crap outta scissors!'; 
+        result = playerRock;
     } else if (playerWeapon == 'paper' && computerWeapon == 'rock') {
-        result = 'You win, paper covers Rock!';
+        result = playerPaper;
     } else if (playerWeapon == 'paper' && computerWeapon == 'scissors') {
-        result = 'Computer wins :( scissors cut paper.';
+        result = computerScissors;
     } else if (playerWeapon == 'scissors' && computerWeapon == 'rock') {
-        result = 'Computer wins, rock smashes scissors.';
+        result = computerRock;
     } else if (playerWeapon == 'scissors' && computerWeapon == 'paper') {
-        result = 'You win, scissors cut paper!';
+        result = playerScissors;
     } else {
-        result = 'It\'s a tie, keep trying!';
+        result = tie;
     }
     return result;
 }
-
+console.log(playRound());
 // Play a game of 5 rounds and return a winner
-function game() {
+/* function game() {
     let playerScore;
     let computerScore;
     let tie;
@@ -78,4 +84,4 @@ function game() {
     }
 }
 
-game();
+game(); */
