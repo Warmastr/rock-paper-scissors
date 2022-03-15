@@ -34,54 +34,42 @@ function playRound() {
     playerWeapon = playerSelection();
     computerWeapon = computerPlay();
     let result;
-    const computerPaper = 'Welp, computer won, they got lucky and chose paper. Paper covers rock.';
-    const playerRock = 'You win, computer chose scissors and rock smashes the crap outta scissors!';
-    const playerPaper = 'You win, computer chose rock. Paper covers Rock!';
-    const computerScissors = 'Computer chose scissors and wins :( scissors cut paper.';
-    const computerRock = 'Computer chose rock and wins, rock smashes scissors.';
-    const playerScissors = 'You win, computer chose paper like an idiot! Scissors cut paper!';
-    const tie = 'It\'s a tie, keep trying!';
     if (playerWeapon == 'rock' && computerWeapon == 'paper') {
-        result = computerPaper;
+        result = 'Welp, computer won, they got lucky and chose paper. Paper covers rock.';
     } else if (playerWeapon == 'rock' && computerWeapon == 'scissors') {
-        result = playerRock;
+        result = 'You win, computer chose scissors and rock smashes the crap outta scissors!';
     } else if (playerWeapon == 'paper' && computerWeapon == 'rock') {
-        result = playerPaper;
+        result = 'You win, computer chose rock. Paper covers Rock!';
     } else if (playerWeapon == 'paper' && computerWeapon == 'scissors') {
-        result = computerScissors;
+        result = 'Computer chose scissors and wins :( scissors cut paper.';
     } else if (playerWeapon == 'scissors' && computerWeapon == 'rock') {
-        result = computerRock;
+        result = 'Computer chose rock and wins, rock smashes scissors.';
     } else if (playerWeapon == 'scissors' && computerWeapon == 'paper') {
-        result = playerScissors;
+        result = 'You win, computer chose paper like an idiot! Scissors cut paper!';
     } else {
-        result = tie;
+        result = 'It\'s a tie, keep trying!';
     }
     return result;
 }
-console.log(playRound());
 // Play a game of 5 rounds and return a winner
-/* function game() {
+function game() {
     let playerScore;
     let computerScore;
     let tie;
     for (let i = 0; i < 5; i++) {
         playRound();
         // tracking scores
-        if (playRound() == 'You win, rock smashes the crap outta scissors!' || playRound() == 'You win, paper covers Rock!' || playRound() == 'You win, scissors cut paper!') {
+        if (playRound() == playerRock || playRound() == playerPaper || playRound() == playerScissors) {
             playerScore += 1;
-        } else if (playRound() == 'Welp, computer won. Paper covers rock.' || playRound() == 'Computer wins :( scissors cut paper.' || playRound() == 'Computer wins, rock smashes scissors.') {
+        } else if (playRound() == computerRock || playRound() == computerPaper || playRound == computerScissors) {
             computerScore += 1;
-        } else if (playRound() == 'It\'s a tie, keep trying!') {
-            tie += 1;
-        } 
-        if (playerScore == 5) { 
-            console.log("You win!");
-        } else if (computerScore == 5) {
-            console.log("Sadly, the computer wins.");
+        } else if (playRound() == tie) {
+            i += 1;
         } else {
-            i += 1; // add 1 to the loop so the game continues. 
+            console.log("Something is way wrong, close this tab and try again.")
         }
+        
     }
 }
 
-game(); */
+game();
