@@ -34,21 +34,21 @@ function playRound() {
     playerWeapon = playerSelection();
     computerWeapon = computerPlay();
     let result;
-    // Logic for game: one variable for the result of the round.
+
     if (playerWeapon == 'rock' && computerWeapon == 'paper') {
-        result = 2; // computer wins
+        result = 'Welp, computer won. Paper covers rock.';
     } else if (playerWeapon == 'rock' && computerWeapon == 'scissors') {
-        result = 1; // player wins
+        result = 'You win, rock smashes the crap outta scissors!'; 
     } else if (playerWeapon == 'paper' && computerWeapon == 'rock') {
-        result = 1; /* console.log("Computer wins. Paper covers rock!") */;
+        result = 'You win, paper covers Rock!';
     } else if (playerWeapon == 'paper' && computerWeapon == 'scissors') {
-        result = 2;/* console.log("You lose. Scissors cut paper!"); */
+        result = 'Computer wins :( scissors cut paper.';
     } else if (playerWeapon == 'scissors' && computerWeapon == 'rock') {
-        result = 2;
+        result = 'Computer wins, rock smashes scissors.';
     } else if (playerWeapon == 'scissors' && computerWeapon == 'paper') {
-        result = 1;
+        result = 'You win, scissors cut paper!';
     } else {
-        result = 3; // results in tie
+        result = 'It\'s a tie, keep trying!';
     }
     return result;
 }
@@ -61,17 +61,13 @@ function game() {
     for (let i = 0; i < 5; i++) {
         playRound();
         // tracking scores
-        if (playRound() == 1) {
-            console.log("You win!");
+        if (playRound() == 'You win, rock smashes the crap outta scissors!' || playRound() == 'You win, paper covers Rock!' || playRound() == 'You win, scissors cut paper!') {
             playerScore += 1;
-        } else if (playRound == 2) {
-            console.log("Computer wins.");
+        } else if (playRound() == 'Welp, computer won. Paper covers rock.' || playRound() == 'Computer wins :( scissors cut paper.' || playRound() == 'Computer wins, rock smashes scissors.') {
             computerScore += 1;
-        } else {
-            console.log("It's a tie");
+        } else if (playRound() == 'It\'s a tie, keep trying!') {
             tie += 1;
-        }
-
+        } 
         if (playerScore == 5) { 
             console.log("You win!");
         } else if (computerScore == 5) {
@@ -81,3 +77,5 @@ function game() {
         }
     }
 }
+
+game();
