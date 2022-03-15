@@ -71,11 +71,13 @@ function game() {
             console.log("It's a tie");
             tie += 1;
         }
-    }
-    if (playerScore == 5) {
-        console.log("Congratulations, you're a winner!");
-    } else if (computerScore == 5) {
-        console.log("Sadly, the computer has won this time.");
-    }
+
+        if (playerScore == 5) { 
+            console.log("You win!");
+        } else if (computerScore == 5) {
+            console.log("Sadly, the computer wins.");
+        } else {
+            i += 1; // add 1 to the loop so the game continues. 
+        }
     }
 }
