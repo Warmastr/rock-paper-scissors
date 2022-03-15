@@ -52,12 +52,30 @@ function playRound() {
     }
     return result;
 }
-console.log(playRound());
+
 // Play a game of 5 rounds and return a winner
-/* function game() {
+function game() {
+    let playerScore;
+    let computerScore;
+    let tie;
     for (let i = 0; i < 5; i++) {
-        console.log(playRound());
+        playRound();
         // tracking scores
-        if 
+        if (playRound() == 1) {
+            console.log("You win!");
+            playerScore += 1;
+        } else if (playRound == 2) {
+            console.log("Computer wins.");
+            computerScore += 1;
+        } else {
+            console.log("It's a tie");
+            tie += 1;
+        }
     }
-} */
+    if (playerScore == 5) {
+        console.log("Congratulations, you're a winner!");
+    } else if (computerScore == 5) {
+        console.log("Sadly, the computer has won this time.");
+    }
+    }
+}
