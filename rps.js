@@ -30,3 +30,27 @@ function playerSelection() {
     return playerSelection;
 }
 // One round of player vs. computer.
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection();
+    computerSelection = computerPlay();
+    let result;
+    let weapons = playerSelection + computerSelection;
+    
+    if (weapons === 'rockpaper') {
+        result = `Computer wins ${computerSelection} covers ${playerSelection}`;
+    } else if (weapons === 'rockscissors') {
+        result = `Your ${playerSelection} beats the computers ${computerSelection}`;
+    } else if (weapons === 'paperrock') {
+        result = `You win because ${playerSelection} covers ${computerSelection}`;
+    } else if (weapons === 'paperscissors') {
+        result = `The computers' ${computerSelection} cut your ${playerSelection}.`;
+    }else if (weapons === 'scissorsrock') {
+        result = `You lose ${computerSelection} smashes your ${playerSelection}!`;
+    }else if (weapons === 'scissorspaper') {
+        result = `Winner Winner Chicken Dinner, ${playerSelection} cut ${computerSelection}!`;
+    } else {
+        result = `It's a tie! You chose ${playerSelection}, the same as the computer! `;
+    }
+    return result;
+}
+console.log(playRound(playerSelection, computerPlay));
