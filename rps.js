@@ -18,19 +18,19 @@ function computerPlay() {
 /* Allows players to select either rock, paper, or scissors for their weapon. */
 function playerSelection() {
     let flag = true;
-    let playerSelection = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
-    playerSelection = playerSelection.toLowerCase();
+    let playerChoice = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
+    playerChoice = playerChoice.toLowerCase();
     // make sure the player types 'rock', 'paper', or 'scissors'
     while (flag) {
-        if (playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors') {
-            playerSelection = playerSelection.toLowerCase();
+        if (playerChoice == 'rock' || playerChoice == 'paper' || playerChoice == 'scissors') {
+            playerChoice = playerChoice.toLowerCase();
             flag = false;
         } else { // player chose something other than 'rock', 'paper', or 'scissors'
             alert("Please type the correct weapon type, 'rock', 'paper' or 'scissors'.");
-            playerSelection = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
+            playerChoice = prompt("Choose your weapon! Type: 'rock', 'paper', or, 'scissors' to choose!");
         }
     }
-    return playerSelection;
+    return playerChoice;
 }
 // One round of player vs. computer.
 function playRound(playerSelection, computerSelection) {
@@ -40,7 +40,7 @@ function playRound(playerSelection, computerSelection) {
     let weapons = playerSelection + computerSelection;
     let winner;
     if (weapons === 'rockpaper') {
-        result = `Computer wins ${computerSelection} covers ${playerSelection}`;
+        result = `Computer wins, ${computerSelection} covers ${playerSelection}`;
         winner = "computer";
     } else if (weapons === 'rockscissors') {
         result = `Your ${playerSelection} beats the computer's ${computerSelection}`;
@@ -66,10 +66,19 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-    let score;
-    for (let i = 0; i < 5; i++) {
-        playRound();
-
+    for (let i = 0; i < 5; i++) { // play 5 rounds
+        playRound(playerSelection, computerPlay); // play a round
+        if (playRound() === 'player') {
+            playerScore += 1;
+            console.log(playerScore); // debug
+        } else if (playRound() === 'computer') {
+            computerScore += 1;
+            console.log(computerScore); // debug
+        } else {
+            computerScore += 0;
+            playerScore += 0; // basically do nothing, felt like I needed something in the else section for the tie game.
+        }
+        console.log(`You have ${playerScore} points. The computer has ${computerScore} points.`);
     }
-
+}
 game();
