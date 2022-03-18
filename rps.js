@@ -68,10 +68,8 @@ function game() {
             let winner = playRound(playerSelection, computerPlay); // play a round
             if (winner === 'player') {
                 playerScore += 1;
-                console.log(playerScore); // debug
             } else if (winner === 'computer') {
                 computerScore += 1;
-                console.log(computerScore); // debug
             } else {
                 computerScore += 0;
                 playerScore += 0; // basically do nothing, felt like I needed something in the else section for the tie game.
