@@ -64,7 +64,8 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-        for (let i = 0; i < 5; i++) { // play 5 rounds
+    /* ADD BUTTON DECLARATION AND FUNCTIONALITY. (think about if player score plus the computer score is equal to 5, then terminate the game)*/
+        for (let i = 0; i < 5; i++) { // REMOVE THIS
             let winner = playRound(playerSelection, computerPlay); // play a round
             if (winner === 'player') {
                 playerScore += 1;
@@ -84,7 +85,7 @@ function game() {
             }
             console.log(`You have ${playerScore} points. The computer has ${computerScore} points.`);
     }
-    console.log(gameWinner);
+    console.log(gameWinner); // some variable.textContent = `${gameWinner}`;
     return gameWinner;
 }
 game();
