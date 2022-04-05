@@ -9,9 +9,8 @@ When the page loads, the user is presented with four buttons:
      variable.
     -game() then runs the code to determine the score by adding a point to either the computer or 
      the player and then display the running total score. If the score gets to five points total, the game should end and the final score should be posted.
-2. rock, allows the user to select rock as a choice.
+2. rock, paper, scissors buttons allows the user to select the respective button as their weapon 
+     choice.
     -when the button is pressed, the player's choice is equal to whichever button was pressed and 
-     the playRound() function is called
-3. paper, allows the user to select paper as a choice.
-4. scissors, allows the user to select scissors as a choice.
+     the playRound() function is called.
 

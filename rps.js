@@ -4,21 +4,20 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const message = document.querySelector('.messages');
+const result = document.querySelector('.result');
 
 newGame.addEventListener('click', () => {
     game();
 });
-
-let buttons = document.querySelectorAll('.button');
-buttons.forEach((button) => {
-    button.addEventListener(click, () => {
-        playRound();
-    });
-}); 
-
-
-
-
+rock.addEventListener('click', () => {
+    playRound();
+});
+paper.addEventListener('click', () => {
+    playRound();
+});
+scissors.addEventListener('click', () => {
+    playRound();
+});
 
 function computerPlay() {
     const compOptions = [0, 1, 2];
@@ -35,49 +34,56 @@ function computerPlay() {
 }
 /* Allows players to select either rock, paper, or scissors for their weapon. */
 function playerSelection() {
-    let playerChoice = buttons;
-    
+    let playerChoice;
+    if (document.getElementById('rock').clicked == true) {
+        playerChoice = 'rock';
+    } else if (document.getElementById('paper').clicked == true) {
+        playerChoice = 'paper';
+    } else if (document.getElementById('scissors').clicked == true) {
+        playerChoice = 'scissors';
+    }
     return playerChoice;
 }
 // One round of player vs. computer.
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection();
+function playRound(playerPlay, computerSelection) {
+    playerPlay = playerSelection();
     computerSelection = computerPlay();
-    let result; //display all to a div
-    let weapons = playerSelection + computerSelection;
+    let result; //display all 'results' to a div
+    let weapons = playerPlay + computerSelection;
     let roundWinner;
     if (weapons === 'rockpaper') {
-        result = `Computer wins, ${computerSelection} covers ${playerSelection}`;
+        result = `Computer wins, ${computerSelection} covers ${playerPlay}`;
         roundWinner = "computer";
     } else if (weapons === 'rockscissors') {
-        result = `Your ${playerSelection} beats the computer's ${computerSelection}`;
+        result = `Your ${playerPlay} beats the computer's ${computerSelection}`;
         roundWinner = "player";
     } else if (weapons === 'paperrock') {
-        result = `You win because ${playerSelection} covers ${computerSelection}`;
+        result = `You win because ${playerPlay} covers ${computerSelection}`;
         roundWinner = "player";
     } else if (weapons === 'paperscissors') {
-        result = `The computers' ${computerSelection} cut your ${playerSelection}.`;
+        result = `The computers' ${computerSelection} cut your ${playerPlay}.`;
         roundWinner = "computer";
     }else if (weapons === 'scissorsrock') {
-        result = `You lose ${computerSelection} smashes your ${playerSelection}!`;
+        result = `You lose ${computerSelection} smashes your ${playerPlay}!`;
         roundWinner = "computer";
     }else if (weapons === 'scissorspaper') {
-        result = `Winner Winner Chicken Dinner, ${playerSelection} cut ${computerSelection}!`;
+        result = `Winner Winner Chicken Dinner, ${playerPlay} cut ${computerSelection}!`;
         roundWinner = "player";
     } else {
-        result = `It's a tie! You chose ${playerSelection}, the same as the computer! `;
+        result = `It's a tie! You chose ${playerPlay}, the same as the computer! `;
         roundWinner = "tie";
     }
     console.log(result); //remove this...
     return roundWinner; // restructure this
 }
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    message.textContent = "This game is you vs. the computer, best out of five games! Choose your weapon by clicking on 'rock', 'paper', or 'scissors'!"
-    
+    message.textContent = "This game is you vs. the computer, best out of five games! Choose your weapon by clicking on 'rock', 'paper', or 'scissors'!";
     /* (think about if player score plus the computer score is equal to 5, then terminate the game)*/
-    let winner = playRound(playerSelection, computerPlay); // This assigns the round winner to the "winner" variable from the call to playRound()
+    // This assigns the round winner to the "winner" variable from the call to playRound()
+    let winner = playRound();
     if (winner === 'player') {
         playerScore += 1;
     } else if (winner === 'computer') {
