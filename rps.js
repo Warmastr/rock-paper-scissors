@@ -4,16 +4,34 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const message = document.querySelector('.messages');
 //const result = document.querySelector('.result');
-const button = document.querySelector('.button');
+let buttons = document.querySelectorAll('.button');
 let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
 let gameWinner;
 
 
+function button() {
+    document.querySelectorAll('.button');
+}
 newGame.addEventListener('click', () => {
     game();
 });
+
+function disableBtn() {
+    buttons.forEach(function(button) {
+        setAttribute('disabled', true);
+    });
+    /* rock.setAttribute('disabled', true);
+    paper.setAttribute('disabled', true);
+    scissors.setAttribute('disabled', true); */
+}
+
+function enableBtn() {
+    buttons.forEach(function(button) {
+        setAttribute('disabled', false);
+    });
+}
 
 function computerPlay() {
     const compOptions = [0, 1, 2];
@@ -62,29 +80,26 @@ function playRound(computerSelection) {
         computerScore += 1;
     }
     console.log(`You have ${playerScore} points. The computer has ${computerScore} point`);
+    console.log(result);
     if (playerScore + computerScore === 5) {
         if (playerScore > computerScore) {
             gameWinner = "Player Wins.";
             console.log("You've Won!!!");
-            
+            disableBtn();
         } else if (computerScore > playerScore) {
             gameWinner = "Computer Wins."
             console.log("The computer wins, better luck next time.");
-            
-        // no one won the round so keep playing
+            disableBtn();
         }
-    }
-    
-    console.log(result); //remove this...
-    return roundWinner; // restructure this
-}
-// start a game
-function game() {
         
-    // IF the player hasn't clicked anything, then wait for a 'click' to happen, get the computers' weapon choice and store it in computerSelection and store the weapon choice for the player in playerChoice
+    }
+    return roundWinner;
+}
+
+function game() {
+    enableBtn();
     if (playerChoice === '') {
         rock.addEventListener('click', () => {
-            // if the rock button is clicked, set playerChoice = to 'rock'
             playerChoice = "rock";
             playRound();
         });
@@ -96,8 +111,7 @@ function game() {
             playerChoice = "scissors";
             playRound();
         });
-    }
-    // When the combined scores of player and computer === 5, the game is over and a winner is declared in the gameWinner variable. 
+    } 
 }
 
 
