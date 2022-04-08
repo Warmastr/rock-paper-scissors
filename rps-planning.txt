@@ -1,16 +1,4 @@
-When the page loads, the user is presented with four buttons:
 
-1. new game, starts a new game and calls the game() function.
-    -game() displays the directions, and then calls the playRound() function. 
-    -playRound() calls the playerSelection() function and the computerPlay() function.
-    -playerSelection() should listen to what the user 'clicks' and store that selection in a     
-     variable to be returned.
-    -computerPlay() randomly chooses between rock, paper, or scissors and returns the choice in a 
-     variable.
-    -game() then runs the code to determine the score by adding a point to either the computer or 
-     the player and then display the running total score. If the score gets to five points total, the game should end and the final score should be posted.
-2. rock, paper, scissors buttons allows the user to select the respective button as their weapon 
-     choice.
-    -when the button is pressed, the player's choice is equal to whichever button was pressed and 
-     the playRound() function is called.
+
+
 
