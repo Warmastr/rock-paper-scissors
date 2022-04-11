@@ -4,6 +4,13 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors'); */
 const message = document.querySelector('.messages');
 const result = document.querySelector('.result');
+result.setAttribute('style', 'white-space: pre;');
+let scoreDiv = document.createElement('div');
+scoreDiv.setAttribute('style', 'white-space: pre');
+scoreDiv.setAttribute('class', 'score');
+result.parentNode.insertBefore(scoreDiv, message);
+const score = document.querySelector('.score');
+score.setAttribute('style', 'white-space: pre');
 let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
@@ -40,25 +47,26 @@ function playRound(computerSelection) {
     let weapons = playerChoice + computerSelection;
     let roundWinner;
     if (weapons === 'rockpaper') {
-        result.textContent = `Computer wins, ${computerSelection} covers ${playerChoice}`;
+
+        result.textContent = result.textContent + ` Computer wins, ${computerSelection} covers ${playerChoice}\r\n\n`;
         roundWinner = "computer";
     } else if (weapons === 'rockscissors') {
-        result.textContent  = `Your ${playerChoice} beats the computer's ${computerSelection}`;
+        result.textContent  = result.textContent + ` Your ${playerChoice} beats the computer's ${computerSelection}\r\n\n`;
         roundWinner = "player";
     } else if (weapons === 'paperrock') {
-        result.textContent  = `You win because ${playerChoice} covers ${computerSelection}`;
+        result.textContent  = result.textContent + ` You win because ${playerChoice} covers ${computerSelection}\r\n\n`;
         roundWinner = "player";
     } else if (weapons === 'paperscissors') {
-        result.textContent  = `The computers' ${computerSelection} cut your ${playerChoice}.`;
+        result.textContent  = result.textContent + ` The computers' ${computerSelection} cut your ${playerChoice}.\r\n\n`;
         roundWinner = "computer";
     }else if (weapons === 'scissorsrock') {
-        result.textContent  = `You lose ${computerSelection} smashes your ${playerChoice}!`;
+        result.textContent  = result.textContent + ` You lose ${computerSelection} smashes your ${playerChoice}!\r\n\n`;
         roundWinner = "computer";
     }else if (weapons === 'scissorspaper') {
-        result.textContent  = `Winner Winner Chicken Dinner, ${playerChoice} cut ${computerSelection}!`;
+        result.textContent  = result.textContent + ` Winner Winner Chicken Dinner, ${playerChoice} cut ${computerSelection}!\r\n\n`;
         roundWinner = "player";
     } else {
-        result.textContent  = `It's a tie! You chose ${playerChoice}, the same as the computer! `;
+        result.textContent  = result.textContent + ` It's a tie! You chose ${playerChoice}, the same as the computer! \r\n\n`;
         roundWinner = "tie";
     }
     if (roundWinner === 'player') {
@@ -66,16 +74,15 @@ function playRound(computerSelection) {
     } else if (roundWinner === 'computer') {
         computerScore += 1;
     }
-    result.textContent  = `You have ${playerScore} points. The computer has ${computerScore} point`;
-    console.log(result);
-    if (playerScore + computerScore >= 5) {
+    score.textContent  = `You have ${playerScore} points. The computer has ${computerScore} point\r\n\n`;
+    if (playerScore + computerScore === 5) {
         if (playerScore > computerScore) {
             gameWinner = "Player Wins.";
-            result.textContent = "You've Won!!!";
+            message.textContent = "You've Won!!!";
             disableBtn();
         } else if (computerScore > playerScore) {
             gameWinner = "Computer Wins."
-            result.textContent = "The computer wins, better luck next time.";
+            message.textContent = "The computer wins, better luck next time.";
             disableBtn();
         }
     }
@@ -84,6 +91,7 @@ function playRound(computerSelection) {
 
 function game() {
     result.textContent = '';
+    message.textContent = '';
     enableBtn();
     playerScore = 0;
     computerScore = 0;
@@ -102,3 +110,4 @@ function game() {
         });
     } 
 }
+disableBtn();
