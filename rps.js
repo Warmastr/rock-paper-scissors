@@ -1,38 +1,26 @@
 const newGame = document.querySelector('.newGame');
-const rock = document.querySelector('#rock');
+/* const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
+const scissors = document.querySelector('#scissors'); */
 const message = document.querySelector('.messages');
 //const result = document.querySelector('.result');
-let buttons = document.querySelectorAll('.button');
 let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
 let gameWinner;
 
-
-function button() {
-    document.querySelectorAll('.button');
-}
 newGame.addEventListener('click', () => {
     game();
 });
 
+// Controls the start/end of the game. 
 function disableBtn() {
-    buttons.forEach(function(button) {
-        setAttribute('disabled', true);
-    });
-    /* rock.setAttribute('disabled', true);
-    paper.setAttribute('disabled', true);
-    scissors.setAttribute('disabled', true); */
+    document.querySelectorAll(".button").forEach(e => e.disabled = true);
 }
-
 function enableBtn() {
-    buttons.forEach(function(button) {
-        setAttribute('disabled', false);
-    });
+    document.querySelectorAll(".button").forEach(e => e.disabled = false);
 }
-
+// Randomly chooses computer weapon.
 function computerPlay() {
     const compOptions = [0, 1, 2];
     let compChoice = Math.floor(Math.random() * compOptions.length);
@@ -81,7 +69,7 @@ function playRound(computerSelection) {
     }
     console.log(`You have ${playerScore} points. The computer has ${computerScore} point`);
     console.log(result);
-    if (playerScore + computerScore === 5) {
+    if (playerScore + computerScore >= 5) {
         if (playerScore > computerScore) {
             gameWinner = "Player Wins.";
             console.log("You've Won!!!");
@@ -91,13 +79,14 @@ function playRound(computerSelection) {
             console.log("The computer wins, better luck next time.");
             disableBtn();
         }
-        
     }
     return roundWinner;
 }
 
 function game() {
     enableBtn();
+    playerScore = 0;
+    computerScore = 0;
     if (playerChoice === '') {
         rock.addEventListener('click', () => {
             playerChoice = "rock";
@@ -113,6 +102,3 @@ function game() {
         });
     } 
 }
-
-
-
