@@ -92,6 +92,7 @@ function playRound(computerSelection) {
 function game() {
     result.textContent = '';
     message.textContent = '';
+    score.textContent = '';
     enableBtn();
     playerScore = 0;
     computerScore = 0;
