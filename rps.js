@@ -1,7 +1,4 @@
 const newGame = document.querySelector('.newGame');
-/* const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors'); */
 const message = document.querySelector('.messages');
 const result = document.querySelector('.result');
 result.setAttribute('style', 'white-space: pre;');
@@ -11,6 +8,8 @@ scoreDiv.setAttribute('class', 'score');
 result.parentNode.insertBefore(scoreDiv, message);
 const score = document.querySelector('.score');
 score.setAttribute('style', 'white-space: pre');
+message.setAttribute('style', 'white-space: pre; background: red; color: white; width: 17%; font-size: 20px;');
+const buttonContainer = document.querySelector('.buttonContainer');
 let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
