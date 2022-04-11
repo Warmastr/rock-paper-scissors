@@ -3,7 +3,7 @@ const newGame = document.querySelector('.newGame');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors'); */
 const message = document.querySelector('.messages');
-//const result = document.querySelector('.result');
+const result = document.querySelector('.result');
 let playerChoice = '';
 let playerScore = 0;
 let computerScore = 0;
@@ -37,29 +37,28 @@ function computerPlay() {
 
 function playRound(computerSelection) {
     computerSelection = computerPlay();
-    let result; //display all 'results' to a div
     let weapons = playerChoice + computerSelection;
     let roundWinner;
     if (weapons === 'rockpaper') {
-        result = `Computer wins, ${computerSelection} covers ${playerChoice}`;
+        result.textContent = `Computer wins, ${computerSelection} covers ${playerChoice}`;
         roundWinner = "computer";
     } else if (weapons === 'rockscissors') {
-        result = `Your ${playerChoice} beats the computer's ${computerSelection}`;
+        result.textContent  = `Your ${playerChoice} beats the computer's ${computerSelection}`;
         roundWinner = "player";
     } else if (weapons === 'paperrock') {
-        result = `You win because ${playerChoice} covers ${computerSelection}`;
+        result.textContent  = `You win because ${playerChoice} covers ${computerSelection}`;
         roundWinner = "player";
     } else if (weapons === 'paperscissors') {
-        result = `The computers' ${computerSelection} cut your ${playerChoice}.`;
+        result.textContent  = `The computers' ${computerSelection} cut your ${playerChoice}.`;
         roundWinner = "computer";
     }else if (weapons === 'scissorsrock') {
-        result = `You lose ${computerSelection} smashes your ${playerChoice}!`;
+        result.textContent  = `You lose ${computerSelection} smashes your ${playerChoice}!`;
         roundWinner = "computer";
     }else if (weapons === 'scissorspaper') {
-        result = `Winner Winner Chicken Dinner, ${playerChoice} cut ${computerSelection}!`;
+        result.textContent  = `Winner Winner Chicken Dinner, ${playerChoice} cut ${computerSelection}!`;
         roundWinner = "player";
     } else {
-        result = `It's a tie! You chose ${playerChoice}, the same as the computer! `;
+        result.textContent  = `It's a tie! You chose ${playerChoice}, the same as the computer! `;
         roundWinner = "tie";
     }
     if (roundWinner === 'player') {
@@ -67,16 +66,16 @@ function playRound(computerSelection) {
     } else if (roundWinner === 'computer') {
         computerScore += 1;
     }
-    console.log(`You have ${playerScore} points. The computer has ${computerScore} point`);
+    result.textContent  = `You have ${playerScore} points. The computer has ${computerScore} point`;
     console.log(result);
     if (playerScore + computerScore >= 5) {
         if (playerScore > computerScore) {
             gameWinner = "Player Wins.";
-            console.log("You've Won!!!");
+            result.textContent = "You've Won!!!";
             disableBtn();
         } else if (computerScore > playerScore) {
             gameWinner = "Computer Wins."
-            console.log("The computer wins, better luck next time.");
+            result.textContent = "The computer wins, better luck next time.";
             disableBtn();
         }
     }
@@ -84,6 +83,7 @@ function playRound(computerSelection) {
 }
 
 function game() {
+    result.textContent = '';
     enableBtn();
     playerScore = 0;
     computerScore = 0;
